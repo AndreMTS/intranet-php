@@ -1,0 +1,24 @@
+.painel-envio{
+    width:100%;
+}
+.content-painel {
+    text-align-last: end;
+}
+
+.card-fotos-videos{
+    max-width:200px;
+    min-height:200px;
+}
+.foto {
+    width: 200px;
+}
+
+#imagemSelecionada {
+    text-align: center;
+}
+
+
+#imagemSelecionada img{
+    min-width: 700px;
+    text-align: center;
+}
