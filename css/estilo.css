@@ -22,3 +22,22 @@
     min-width: 700px;
     text-align: center;
 }
+/* CSS para posicionar os ícones de seta no meio esquerdo e direito do modal */
+#botaoAnterior{
+    position: relative;
+    bottom: 250px;
+    left: 42px;
+
+}
+
+#botaoProximo {
+    position: relative;
+    bottom: 249px;
+    left: 1058px;
+}
+
+
+
+
+
+

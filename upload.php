@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fotos = $_FILES["fotos"];
 
         // Cria a pasta para salvar as fotos
-        $caminho_pasta = 'fotos_carregadas/' . $nome_pasta;
+        $caminho_pasta = 'storage/' . $nome_pasta;
         if (!is_dir($caminho_pasta)) {
             mkdir($caminho_pasta, 0777, true);
         }
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Código para tratar o upload do vídeo
         $nome_arquivo_video = date("YmdHis") . '_' . $video["name"];
-        $caminho_pasta_videos = 'fotos_carregadas/' . $nome_pasta_videos;
+        $caminho_pasta_videos = 'storage/' . $nome_pasta_videos;
 
         if (!is_dir($caminho_pasta_videos)) {
             mkdir($caminho_pasta_videos, 0777, true);

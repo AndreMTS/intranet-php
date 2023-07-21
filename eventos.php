@@ -100,7 +100,7 @@
                             <div class="content-photos row">
                                 <?php
                                 // Caminho da pasta de fotos
-                                $caminho_fotos = 'fotos_carregadas';
+                                $caminho_fotos = 'storage';
 
                                 // Obtém a lista de pastas existentes
                                 $pastas = array_filter(glob($caminho_fotos . '/*'), 'is_dir');

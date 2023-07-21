@@ -26,31 +26,15 @@
                         <div class="card-header">
                             Galeria
                         </div>
+
+                        <!--Função para obter o MIME type de um arquivo -->
+                        <?php include 'mimetype.php'; ?>
+
                         <div class="card-body row">
                             <?php
-                            
-                            // Função para obter o MIME type de um arquivo
-                            function getMimeType($arquivo)
-                            {
-                                $extensao = pathinfo($arquivo, PATHINFO_EXTENSION);
-                                switch ($extensao) {
-                                    case 'jpg':
-                                    case 'jpeg':
-                                        return 'image/jpeg';
-                                    case 'png':
-                                        return 'image/png';
-                                    case 'gif':
-                                        return 'image/gif';
-                                    case 'mp4':
-                                        return 'video/mp4';
-                                    default:
-                                        return '';
-                                }
-                            }
-
                             $pasta = $_GET['pasta'];
                             // Obtém a lista de arquivos na pasta
-                            $arquivos = glob('fotos_carregadas/' . $pasta . '/*');
+                            $arquivos = glob('storage/' . $pasta . '/*');
 
                             echo '<div class="row">';
                             if (count($arquivos) > 0) {
@@ -58,8 +42,7 @@
                                     $mime_type = getMimeType($arquivo);
                                     if ($mime_type === 'image/jpeg' || $mime_type === 'image/png' || $mime_type === 'image/gif') {
 
-                                        echo '<a class="m-2 p-2" href="#" data-toggle="modal" data-target="#imagemModal" data-arquivo="' . $arquivo . '"><img src="' . $arquivo . '" alt="Foto" class="foto"></a>';
-
+                                        echo '<a class="m-2 p-2" href="#" data-toggle="modal" data-target="#imagemModal" data-arquivo="' . $arquivo . '"><img src="' . $arquivo . '" alt="Foto" class="foto img-fluid rounded"></a>';
                                     } elseif ($mime_type === 'video/mp4') {
                                         echo '<a class="m-2 p-2" href="#" data-toggle="modal" data-target="#imagemModal" data-arquivo="' . $arquivo . '"><video controls><source src="' . $arquivo . '" type="video/mp4">Seu navegador não suporta a reprodução de vídeo.</video></a>';
                                     }
@@ -72,21 +55,36 @@
                         </div>
 
                         <!-- Modal para exibir as fotos e vídeos -->
-                        <div class="modal fade" id="imagemModal" tabindex="-1" role="dialog" aria-labelledby="imagemModalLabel" aria-hidden="true" data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <!-- Aqui será exibida a foto ou vídeo selecionado -->
-                <div id="imagemSelecionada"></div>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn btn-secondary" data-dismiss="modal">Fechar</a>
-                <a href="#" class="btn btn-primary" id="botaoAnterior">Anterior</a>
-                <a href="#" class="btn btn-primary" id="botaoProximo">Próximo</a>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="modal fade" id="imagemModal" role="dialog" aria-labelledby="imagemModalLabel" aria-hidden="true" data-keyboard="false">
+                            <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+                                <div class="modal-content modal-conteudo">
+                                    <div>
+                                        <a href="#" class="butao-fechar-modal close m-2" data-dismiss="modal">&times;</a>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Aqui será exibida a foto ou vídeo selecionado -->
+                                        <div id="imagemSelecionada"></div>
+                                    </div>
+                                    <div class="controle-midia">
+                                        <!-- Ícone de seta para voltar -->
+                                       
+                                            <a href="#" id="botaoAnterior">
+                                                <i class="fa-solid fa-circle-arrow-left"></i>
+                                            </a>
+                                        
+
+                                        <!-- Ícone de seta para avançar -->
+                                       
+                                            <a href="#" id="botaoProximo">
+                                                <i class="fa-solid fa-circle-arrow-right"></i>
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -104,12 +102,11 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <script>
-    let midias = <?php echo json_encode($arquivos); ?>; // Array com as fotos e vídeos
-    let indiceAtual = <?php echo isset($_GET['indice']) ? $_GET['indice'] : 0; ?>; // Índice da foto ou vídeo atual
+        let midias = <?php echo json_encode($arquivos); ?>; // Array com as fotos e vídeos
+        let indiceAtual = <?php echo isset($_GET['indice']) ? $_GET['indice'] : 0; ?>; // Índice da foto ou vídeo atual
+    </script>
 
-</script>
-
-<script src="./js/utils-galeria.js"></script>
+    <script src="./js/utils-galeria.js"></script>
 
 </body>
 

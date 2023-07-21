@@ -74,6 +74,8 @@
         }
     }
 
+        
+    
         // Função para fechar o modal e pausar o vídeo (caso seja um vídeo)
         function fecharModal() {
         let modal = new bootstrap.Modal(document.getElementById('imagemModal'));
@@ -95,7 +97,35 @@
     });
 
     // Vincular evento de clique no botão "Fechar" para fechar o modal
-    document.querySelector('#imagemModal .modal-footer .btn-secondary').addEventListener('click', function (event) {
+    document.querySelector('.butao-fechar-modal').addEventListener('click', function (event) {
         event.preventDefault();
         fecharModal();
     });
+
+    // Função para avançar para a próxima mídia na galeria
+function avancarMidia() {
+    indiceAtual = (indiceAtual + 1) % midias.length;
+    document.getElementById('imagemSelecionada').innerHTML = getMidiaHtml(indiceAtual);
+  }
+  
+  // Função para voltar para a mídia anterior na galeria
+  function voltarMidia() {
+    indiceAtual = (indiceAtual - 1 + midias.length) % midias.length;
+    document.getElementById('imagemSelecionada').innerHTML = getMidiaHtml(indiceAtual);
+  }
+
+
+    // Evento para detectar teclas pressionadas
+document.addEventListener('keydown', function (event) {
+    // Verifica se o modal está aberto e a tecla pressionada é a seta para a esquerda
+    if (document.getElementById('imagemModal').classList.contains('show') && event.key === 'ArrowLeft') {
+      voltarMidia(); // Chama a função para voltar para a mídia anterior
+    }
+  
+    // Verifica se o modal está aberto e a tecla pressionada é a seta para a direita
+    if (document.getElementById('imagemModal').classList.contains('show') && event.key === 'ArrowRight') {
+      avancarMidia(); // Chama a função para avançar para a próxima mídia
+    }
+  });
+  
+
