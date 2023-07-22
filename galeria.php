@@ -54,35 +54,44 @@
                             ?>
                         </div>
 
-                        <!-- Modal para exibir as fotos e vídeos -->
-                        <div class="modal fade" id="imagemModal" role="dialog" aria-labelledby="imagemModalLabel" aria-hidden="true" data-keyboard="false">
-                            <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
-                                <div class="modal-content modal-conteudo">
-                                    <div>
-                                        <a href="#" class="butao-fechar-modal close m-2" data-dismiss="modal">&times;</a>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- Aqui será exibida a foto ou vídeo selecionado -->
-                                        <div id="imagemSelecionada"></div>
-                                    </div>
-                                    <div class="controle-midia">
-                                        <!-- Ícone de seta para voltar -->
-                                       
-                                            <a href="#" id="botaoAnterior">
-                                                <i class="fa-solid fa-circle-arrow-left"></i>
-                                            </a>
-                                        
+                       <!-- Modal para exibir as fotos e vídeos -->
+<div class="modal" id="imagemModal" role="dialog" aria-labelledby="imagemModalLabel">
+    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+        <div class="modal-content border-0 modal-conteudo">
+            <div>
+                <a href="#" class="botao-fechar-modal close m-2" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <!-- Aqui será exibida a foto ou vídeo selecionado -->
+                <div id="imagemSelecionada"></div>
+            </div>
+            <div class="controle-midia">
+                
+                <!-- Ícone de seta para voltar -->
+                <a href="#" id="botaoAnterior">
+                    <div class="botaoAnterior">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div>
+                </a>
+                
+                <!-- Ícone de seta para avançar -->
+                <a href="#" id="botaoProximo">
+                    <div class="botaoProximo">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                </a>
 
-                                        <!-- Ícone de seta para avançar -->
-                                       
-                                            <a href="#" id="botaoProximo">
-                                                <i class="fa-solid fa-circle-arrow-right"></i>
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            
+            <!-- Botão de apresentação automática -->
+            <a href="#" id="botaoApresentacao">
+                <i class="fa-solid fa-play"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
 
 
                     </div>
@@ -101,6 +110,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    
     <script>
         let midias = <?php echo json_encode($arquivos); ?>; // Array com as fotos e vídeos
         let indiceAtual = <?php echo isset($_GET['indice']) ? $_GET['indice'] : 0; ?>; // Índice da foto ou vídeo atual

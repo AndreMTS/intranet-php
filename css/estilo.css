@@ -17,27 +17,63 @@
     text-align: center;
 }
 
-
+.modal-conteudo{
+background-color: transparent !important;
+}
 #imagemSelecionada img{
-    min-width: 700px;
+    min-width: 800px;
     text-align: center;
 }
 /* CSS para posicionar os ícones de seta no meio esquerdo e direito do modal */
-#botaoAnterior{
-    position: relative;
-    bottom: 250px;
-    left: 42px;
 
+.botaoProximo{
+    width: 150px;
+    position: absolute;
+    left: 88%;
+    top: 0;
+    height: 100%;
+}
+.botaoProximo i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 45px;
+    color: #818181;
+}
+.botaoProximo i:hover {
+    color: #ffffff;
 }
 
-#botaoProximo {
-    position: relative;
-    bottom: 249px;
-    left: 1058px;
+.botaoAnterior{
+    width: 150px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+.botaoAnterior i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 45px;
+    color: #818181;
 }
 
+.botaoAnterior i:hover {
+    color: #ffffff;
+}
 
+.botao-fechar-modal{
+    position: absolute;
+    top: -34px;
+    left: 1460px;
+    color: #fff;
+}
 
-
-
-
+#botaoApresentacao{
+    position: absolute;
+    left: 50%;
+    bottom: 43px;
+    font-size: 25px;
+    color: #dd6b3d;
+}
